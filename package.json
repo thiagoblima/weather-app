@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "init-project": "rm -rf node_modules && npm install && tsc --listEmittedFiles && npm run list-notes",
+    "test-weather": "node app -a='1301 lambard street philadelphia'",
+    "build":"tsc --listEmittedFiles"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Thiago Lima",
+  "license": "MIT",
   "dependencies": {
     "axios": "^0.13.1",
     "request": "^2.73.0",

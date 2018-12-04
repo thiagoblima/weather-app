@@ -1,3 +1,10 @@
+/**
+ * @author: Thiago Lima
+ * @description: Main entry application for the geocode and weather
+ * requests. 
+ * @version: 0.1.0
+ */
+
 const yargs = require('yargs');
 const axios = require('axios');
 const buildDev = require('./environments/build-dev');
