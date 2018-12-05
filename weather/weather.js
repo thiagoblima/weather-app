@@ -1,8 +1,17 @@
+/**
+ * @author: <thitheguy@gmail.com> Thiago Lima
+ * @version: 0.1.0
+ * @name: weather
+ * @description: Forecast IO Service.
+ * @exports: @function: getweather
+ */
+
 const request = require('request');
+const buildDev = require('../environments/build-dev');
 
 var getWeather = (lat, lng, callback) => {
   request({
-    url: `https://api.darksky.net/forecast/5d706bff878839eb3a3cb1ef9f7ef403/${lat},${lng}`,
+    url: `${buildDev.forecastIOURL}/${buildDev.forecastIOKey}${lat},${lng}`,
     json: true
   }, (error, response, body) => {
     if (error) {

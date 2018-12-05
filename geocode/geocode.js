@@ -1,10 +1,19 @@
+/**
+ * @author: <thitheguy@gmail.com> Thiago Lima
+ * @version: 0.1.0
+ * @name: geocode
+ * @description: Google Geocode Service.
+ * @exports: @function: geocodeAddress
+ */
+
 const request = require('request');
+const buildDev = require('../environments/build-dev');
 
 var geocodeAddress = (address, callback) => {
   var encodedAddress = encodeURIComponent(address);
 
   request({
-    url: `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=AIzaSyAhcAjIQPHNNe7sgwSub_g3xnvU2g9FF3k`,
+    url: `${buildDev.googleAPIURL}json?address=${encodedAddress}&key=${buildDev.googleAPIKey}`,
     json: true
   }, (error, response, body) => {
     if (error) {
@@ -15,7 +24,8 @@ var geocodeAddress = (address, callback) => {
       callback(undefined, {
         address: body.results[0].formatted_address,
         latitude: body.results[0].geometry.location.lat,
-        longitude: body.results[0].geometry.location.lng
+        longitude: body.results[0].geometry.location.lng,
+        response: response
       });
     }
   });

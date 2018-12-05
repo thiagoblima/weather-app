@@ -1,8 +1,8 @@
 /**
- * @author: Thiago Lima
+ * @author: <thtiheguy@gmail.com> Thiago Lima
+ * @version: 0.1.0
  * @description: Main entry application for the geocode and weather
  * requests. 
- * @version: 0.1.0
  */
 
 const yargs = require('yargs');
@@ -32,7 +32,7 @@ axios.get(geocodeUrl).then((response) => {
    console.log('response', response);
   var lat = response.data.results[0].geometry.location.lat;
   var lng = response.data.results[0].geometry.location.lng;
-  var weatherUrl = `${forecastIOURL}/${forecastIOKey}${lat},${lng}`;
+  var weatherUrl = `${buildDev.forecastIOURL}/${buildDev.forecastIOKey}${lat},${lng}`;
   console.log(response.data.results[0].formatted_address);
   return axios.get(weatherUrl);
 }).then((response) => {
