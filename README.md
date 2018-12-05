@@ -18,6 +18,19 @@ What things you need to install the software and how to install them
 Nodejs, NPM, TypeScript, GitBash or Linux command line interface, VSCode or your preferred Code Editor - Latest 
 ```
 
+### Building process
+
+It's an example object you should have in order to make the sensitive information hidden over the `.gitkeep` repository, *environments*.
+
+```
+ module.exports = {
+     googleAPIURL: 'https://maps.googleapis.com/maps/api/geocode/',
+     googleAPIKey: 'XXXXXXXXXXXXXXXXXXXXXXXXk',
+     forecastIOURL: 'https://api.darksky.net/forecast/',
+     forecastIOKey: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+ }
+```
+
 ### Installing
 
 A step by step series of examples that tell you how to get a development env running
