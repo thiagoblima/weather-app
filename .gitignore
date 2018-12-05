@@ -5,7 +5,13 @@ node_modules
 ## environment settings
 
 environments/build-dev.js
+weather-app/environments/dev-build.ts
 
 ## gists and self-pratical examples
 
 playground/
+
+## definitely types
+
+environments/build-dev.d.ts
+app.d.ts

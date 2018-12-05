@@ -1,5 +1,13 @@
+/**
+ * @author: <thtiheguy@gmail.com> Thiago Lima
+ * @version: 0.1.0
+ * @description: Main entry application for the geocode and weather
+ * requests. 
+ */
+
 const yargs = require('yargs');
 const axios = require('axios');
+const buildDev = require('./environments/build-dev');
 
 const argv = yargs
   .options({
@@ -15,7 +23,7 @@ const argv = yargs
   .argv;
 
 var encodedAddress = encodeURIComponent(argv.address);
-var geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=AIzaSyAhcAjIQPHNNe7sgwSub_g3xnvU2g9FF3k`;
+var geocodeUrl = `${buildDev.googleAPIURL}json?address=${encodedAddress}&key=${buildDev.googleAPIKey}`;
 
 axios.get(geocodeUrl).then((response) => {
   if (response.data.status === 'ZERO_RESULTS') {
@@ -24,7 +32,7 @@ axios.get(geocodeUrl).then((response) => {
    console.log('response', response);
   var lat = response.data.results[0].geometry.location.lat; 
   var lng = response.data.results[0].geometry.location.lng;
-  var weatherUrl = `https://api.darksky.net/forecast/5d706bff878839eb3a3cb1ef9f7ef403/${lat},${lng}`;
+  var weatherUrl = `${buildDev.forecastIOURL}/${buildDev.forecastIOKey}${lat},${lng}`;
   console.log(response.data.results[0].formatted_address);
   return axios.get(weatherUrl);
 }).then((response) => {
