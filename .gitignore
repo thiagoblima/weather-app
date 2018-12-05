@@ -5,3 +5,7 @@ node_modules
 ## environment settings
 
 environments/build-dev.js
+
+## gists and self-pratical examples
+
+playground/*
