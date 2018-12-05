@@ -1,3 +1,10 @@
+/**
+ * @author: <thtiheguy@gmail.com> Thiago Lima
+ * @version: 0.1.0
+ * @description: Main entry application for the geocode and weather
+ * requests. 
+ */
+
 const yargs = require('yargs');
 
 const geocode = require('./geocode/geocode');
