@@ -20,7 +20,7 @@ Nodejs, NPM, TypeScript, GitBash or Linux command line interface, VSCode or your
 
 ### Building process
 
-It's an example object you should have in order to make the sensitive information hidden over the `.gitkeep` repository, *environments*.
+It's an example object you should have in order to make the sensitive information hidden over the `.gitkeep` directory, *environments*.
 
 ```
  module.exports = {
