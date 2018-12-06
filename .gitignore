@@ -14,5 +14,6 @@ playground/
 ## definitely types
 
 environments/build-dev.d.ts
+entities/*
 app.d.ts
 command-line.tools.d.ts
