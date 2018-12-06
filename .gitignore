@@ -8,7 +8,7 @@ weather-app/environments/build.dev.ts
 playground/
 
 ## definitely types
-entities/*
+models/*
 environments/*
 geocode/*
 weather/*

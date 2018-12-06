@@ -8,7 +8,7 @@
 import * as axios from 'axios';
 import { BuildDev } from './environments/build.dev';
 import { CommandLine } from './command-line.tools';
-import { MainModel } from './entities/main.interface';
+import { MainModel } from './models/main.interface';
 
 export class Main implements MainModel {
   public build_dev;

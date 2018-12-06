@@ -5,7 +5,7 @@
  * @exports: object
  */
 
-import { BuildDevModel } from '../entities/build.interface';
+import { BuildDevModel } from '../models/build.interface';
  
 export class BuildDev implements BuildDevModel {
     public apikeys;
