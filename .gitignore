@@ -2,7 +2,6 @@
 node_modules
 
 ## environment settings
-environments/*
 weather-app/environments/build.dev.ts
 
 ## gists and self-pratical examples
@@ -10,6 +9,9 @@ playground/
 
 ## definitely types
 entities/*
+environments/*
+geocode/*
+weather/*
 app.js
 app.d.ts
 command-line.tools.d.ts
