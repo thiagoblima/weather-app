@@ -23,12 +23,19 @@ Nodejs, NPM, TypeScript, GitBash or Linux command line interface, VSCode or your
 It's an example object you should have in order to make the sensitive information hidden over the `.gitkeep` directory, *environments*.
 
 ```
- module.exports = {
-     googleAPIURL: 'https://maps.googleapis.com/maps/api/geocode/',
-     googleAPIKey: 'XXXXXXXXXXXXXXXXXXXXXXXXk',
-     forecastIOURL: 'https://api.darksky.net/forecast/',
-     forecastIOKey: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
- }
+import { BuildDevEntity } from '../entities/build.interface';
+ 
+export class BuildDev implements BuildDevEntity {
+    public apikeys;
+    constructor({...apikeys}) {
+        this.apikeys = {
+            googleAPIURL: 'https://maps.googleapis.com/maps/api/geocode/',
+            googleAPIKey: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            forecastIOURL: 'https://api.darksky.net/forecast/',
+            forecastIOKey: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+        } || apikeys;
+    }
+}
 ```
 
 ### Installing
