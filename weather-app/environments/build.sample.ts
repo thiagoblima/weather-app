@@ -5,9 +5,9 @@
  * @exports: object
  */
 
-import { BuildDevEntity } from '../entities/build.interface';
+import { BuildDevModel } from '../entities/build.interface';
  
-export class BuildDev implements BuildDevEntity {
+export class BuildDev implements BuildDevModel {
     public apikeys;
     constructor({...apikeys}) {
         this.apikeys = {

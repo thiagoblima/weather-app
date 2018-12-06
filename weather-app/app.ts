@@ -8,9 +8,10 @@
 import * as axios from 'axios';
 import { BuildDev } from './environments/build.dev';
 import { CommandLine } from './command-line.tools';
+import { MainModel } from './entities/main.interface';
 
-export class Main {
-  build_dev;
+export class Main implements MainModel {
+  public build_dev;
   constructor({ ...attr }) {
     this.build_dev = new BuildDev({ ...attr });
   }

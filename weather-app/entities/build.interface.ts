@@ -1,13 +1,13 @@
 /**
  * @author: <thitheguy@gmail.com> Thiago Lima
- * @class: BuildDevEntiry
+ * @class: BuildDevModel
  * @version: 0.1.0
- * @description: env file with sensitive info.
+ * @description: building model.
  * @exports: object
  */
 
 
-export interface BuildDevEntity {
+export interface BuildDevModel {
     apikeys: {
        googleAPIURL: string;
        googleAPIKey: string;

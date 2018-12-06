@@ -9,10 +9,7 @@
  */
 
 import * as yargs from 'yargs';
-
-export interface CommandLineModel {
-  argv: object;
-}
+import { CommandLineModel } from './entities/command-line.interface';
 
 export class CommandLine implements CommandLineModel {
   public argv;
