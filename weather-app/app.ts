@@ -16,14 +16,14 @@ export class Main implements MainModel {
     this.build_dev = new BuildDev({ ...attr });
   }
 
-  public initApp() {
+  async initApp() {
 
     const commandLine = new CommandLine();
 
     const encodedAddress = encodeURIComponent(commandLine.argv.address);
     const geocodeUrl = `${this.build_dev.apikeys.googleAPIURL}json?address=${encodedAddress}&key=${this.build_dev.apikeys.googleAPIKey}`;
 
-    axios.get(geocodeUrl).then((response) => {
+   await axios.get(geocodeUrl).then((response) => {
 
       if (response.data.status === 'ZERO_RESULTS') {
         throw new Error('Unable to find that address.');
