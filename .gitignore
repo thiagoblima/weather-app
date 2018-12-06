@@ -15,3 +15,4 @@ playground/
 
 environments/build-dev.d.ts
 app.d.ts
+command-line.tools.d.ts

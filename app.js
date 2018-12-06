@@ -26,9 +26,9 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var yargs = require("yargs");
 var axios = require("axios");
 var build_dev_1 = require("./environments/build.dev");
+var command_line_tools_1 = require("./command-line.tools");
 var Main = /** @class */ (function () {
     function Main(_a) {
         var attr = __rest(_a, []);
@@ -36,19 +36,8 @@ var Main = /** @class */ (function () {
     }
     Main.prototype.initApp = function () {
         var _this = this;
-        var argv = yargs
-            .options({
-            a: {
-                demand: true,
-                alias: 'address',
-                describe: 'Address to fetch weather for',
-                string: true
-            }
-        })
-            .help()
-            .alias('help', 'h')
-            .argv;
-        var encodedAddress = encodeURIComponent(argv.address);
+        var commandLine = new command_line_tools_1.CommandLine();
+        var encodedAddress = encodeURIComponent(commandLine.argv.address);
         var geocodeUrl = this.build_dev.apikeys.googleAPIURL + "json?address=" + encodedAddress + "&key=" + this.build_dev.apikeys.googleAPIKey;
         axios.get(geocodeUrl).then(function (response) {
             if (response.data.status === 'ZERO_RESULTS') {

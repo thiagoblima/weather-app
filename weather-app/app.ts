@@ -5,9 +5,9 @@
  * requests. 
  */
 
-import * as yargs from 'yargs';
 import * as axios from 'axios';
 import { BuildDev } from './environments/build.dev';
+import { CommandLine } from './command-line.tools';
 
 export class Main {
   build_dev;
@@ -17,20 +17,9 @@ export class Main {
 
   public initApp() {
 
-    const argv = yargs
-      .options({
-        a: {
-          demand: true,
-          alias: 'address',
-          describe: 'Address to fetch weather for',
-          string: true
-        }
-      })
-      .help()
-      .alias('help', 'h')
-      .argv;
+    const commandLine = new CommandLine();
 
-    var encodedAddress = encodeURIComponent(argv.address);
+    var encodedAddress = encodeURIComponent(commandLine.argv.address);
     var geocodeUrl = `${this.build_dev.apikeys.googleAPIURL}json?address=${encodedAddress}&key=${this.build_dev.apikeys.googleAPIKey}`;
 
     axios.get(geocodeUrl).then((response) => {
