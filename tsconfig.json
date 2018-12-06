@@ -16,7 +16,6 @@
         "outDir": "./"
     },
     "files": [
-        "./weather-app/app.ts",
-        "./weather-app/environments/build-dev.ts"
+        "./weather-app/app.ts"
     ]
 }

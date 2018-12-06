@@ -4,8 +4,8 @@ node_modules
 
 ## environment settings
 
-environments/build-dev.js
-weather-app/environments/dev-build.ts
+environments/build.dev.js
+weather-app/environments/build.dev.ts
 
 ## gists and self-pratical examples
 
