@@ -5,6 +5,7 @@ node_modules
 ## environment settings
 
 environments/build.dev.js
+environments/build.dev.d.ts
 weather-app/environments/build.dev.ts
 
 ## gists and self-pratical examples
@@ -13,7 +14,7 @@ playground/
 
 ## definitely types
 
-environments/build-dev.d.ts
+
 entities/*
 app.d.ts
 command-line.tools.d.ts
