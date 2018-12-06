@@ -1,20 +1,17 @@
 ## npm packages
-
 node_modules
 
 ## environment settings
-
-environments/build.dev.d.ts
-environments/build.dev.js
+environments/*
 weather-app/environments/build.dev.ts
 
 ## gists and self-pratical examples
-
 playground/
 
 ## definitely types
-
-
 entities/*
+app.js
 app.d.ts
 command-line.tools.d.ts
+command-line.tools.js
+
