@@ -23,7 +23,7 @@ export class Main implements MainModel {
     const encodedAddress = encodeURIComponent(commandLine.argv.address);
     const geocodeUrl = `${this.build_dev.apikeys.googleAPIURL}json?address=${encodedAddress}&key=${this.build_dev.apikeys.googleAPIKey}`;
 
-   await axios.get(geocodeUrl).then((response) => {
+    await axios.get(geocodeUrl).then(async (response) => {
 
       if (response.data.status === 'ZERO_RESULTS') {
         throw new Error('Unable to find that address.');
@@ -35,12 +35,12 @@ export class Main implements MainModel {
       const weatherUrl = `${this.build_dev.apikeys.forecastIOURL}/${this.build_dev.apikeys.forecastIOKey}${lat},${lng}`;
       console.log(response.data.results[0].formatted_address);
      
-      return axios.get(weatherUrl);
+      return await axios.get(weatherUrl);
 
-    }).then((response) => {
+    }).then(async (response) => {
       let temperature = response.data.currently.temperature;
       var apparentTemperature = response.data.currently.apparentTemperature;
-      console.log(`It's currently ${temperature}. It feels like ${apparentTemperature}.`);
+      return await console.log(`It's currently ${temperature}. It feels like ${apparentTemperature}.`);
     }).catch((e) => {
       if (e.code === 'ENOTFOUND') {
         console.log('Unable to connect to API servers.');
@@ -54,6 +54,5 @@ export class Main implements MainModel {
 }
 
 const main = new Main({});
-
 main.initApp();
 
