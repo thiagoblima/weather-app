@@ -24,33 +24,33 @@ export class Main implements MainModel {
 
     try {
 
-    await axios.get(geocodeUrl).then(async (response) => {
+      await axios.get(geocodeUrl).then(async (response) => {
 
-      if (response.data.status === 'ZERO_RESULTS') {
-        throw new Error('Unable to find that address.');
-      }
+        if (response.data.status === 'ZERO_RESULTS') {
+          throw new Error('Unable to find that address.');
+        }
 
-      console.log('response', response);
-      const lat = response.data.results[0].geometry.location.lat;
-      const lng = response.data.results[0].geometry.location.lng;
-      const weatherUrl = `${this.build_dev.apikeys.forecastIOURL}/${this.build_dev.apikeys.forecastIOKey}/${lat},${lng}`;
-      console.log(response.data.results[0].formatted_address);
-     
-      return await axios.get(weatherUrl);
+        console.log('response', response);
+        const lat = response.data.results[0].geometry.location.lat;
+        const lng = response.data.results[0].geometry.location.lng;
+        const weatherUrl = `${this.build_dev.apikeys.forecastIOURL} ${this.build_dev.apikeys.forecastIOKey} / ${lat},${lng}`;
+        console.log(response.data.results[0].formatted_address);
 
-    }).then(async (response) => {
-      let temperature = response.data.currently.temperature;
-      var apparentTemperature = response.data.currently.apparentTemperature;
-      return await console.log(`It's currently ${temperature}. It feels like ${apparentTemperature}.`);
-    }).catch((e) => {
-      if (e.code === 'ENOTFOUND') {
-        console.log('Unable to connect to API servers.');
-      } else {
-        console.log(e.message);
-      }
-    });
+        return await axios.get(weatherUrl);
 
-    } catch(e) {
+      }).then(async (response) => {
+        let temperature = response.data.currently.temperature;
+        var apparentTemperature = response.data.currently.apparentTemperature;
+        return await console.log(`It's currently ${temperature}. It feels like ${apparentTemperature}.`);
+      }).catch((e) => {
+        if (e.code === 'ENOTFOUND') {
+          console.log('Unable to connect to API servers.');
+        } else {
+          console.log(e.message);
+        }
+      });
+
+    } catch (e) {
 
       await console.log(e);
 
