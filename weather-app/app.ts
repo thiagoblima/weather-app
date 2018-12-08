@@ -19,9 +19,10 @@ export class Main implements MainModel {
   async initApp() {
 
     const commandLine = new CommandLine();
-
     const encodedAddress = encodeURIComponent(commandLine.argv.address);
     const geocodeUrl = `${this.build_dev.apikeys.googleAPIURL}json?address=${encodedAddress}&key=${this.build_dev.apikeys.googleAPIKey}`;
+
+    try {
 
     await axios.get(geocodeUrl).then(async (response) => {
 
@@ -32,7 +33,7 @@ export class Main implements MainModel {
       console.log('response', response);
       const lat = response.data.results[0].geometry.location.lat;
       const lng = response.data.results[0].geometry.location.lng;
-      const weatherUrl = `${this.build_dev.apikeys.forecastIOURL}/${this.build_dev.apikeys.forecastIOKey}${lat},${lng}`;
+      const weatherUrl = `${this.build_dev.apikeys.forecastIOURL}/${this.build_dev.apikeys.forecastIOKey}/${lat},${lng}`;
       console.log(response.data.results[0].formatted_address);
      
       return await axios.get(weatherUrl);
@@ -49,6 +50,11 @@ export class Main implements MainModel {
       }
     });
 
+    } catch(e) {
+
+      await console.log(e);
+
+    }
   }
 
 }
