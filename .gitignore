@@ -14,6 +14,8 @@ geocode/*
 weather/*
 app.js
 app.d.ts
+logger.d.ts
+logger.js
 command-line.tools.d.ts
 command-line.tools.js
 

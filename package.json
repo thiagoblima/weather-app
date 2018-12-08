@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "init-project": "rm -rf node_modules && npm install && tsc --listEmittedFiles && npm run list-notes",
+    "init-project": "rm -rf node_modules && rm -rf environments && rm -rf models && npm install && tsc",
     "test-weather": "node app -a='1301 lambard street philadelphia'",
-    "build":"tsc --listEmittedFiles"
+    "build": "tsc --listEmittedFiles"
   },
   "author": "Thiago Lima",
   "license": "MIT",
