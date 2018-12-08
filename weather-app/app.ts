@@ -43,8 +43,8 @@ export class Main implements MainModel {
           lng: await lng
         };
 
-      }).catch(async (error) => {
-        await this.loggerService.error('An error occured on the requested API', error);
+      }).catch((error) => {
+        return this.loggerService.error('An error occured on the requested API', error);
       })
     } catch (error) {
       await this.loggerService.error('An error occured:', error);
@@ -59,22 +59,20 @@ export class Main implements MainModel {
       const apparentTemperature = response.data.currently.apparentTemperature;
       return await this.loggerService.log(`It's currently ${temperature}. It feels like ${apparentTemperature}.`, { temperature: temperature, apparentTemperature: apparentTemperature });
 
-    }).catch(async (error) => {
+    }).catch((error) => {
       if (error.code === 'ENOTFOUND') {
-        await this.loggerService.error('Unable to connect to API servers.', error);
+        return this.loggerService.error('Unable to connect to API servers.', error);
       } else {
-        await this.loggerService.error(error.message);
+        return this.loggerService.error(error.message);
       }
     });
   }
 
   async initApp() {
-    const results = this.getGeoCodeAPI();
-
-    results.then(async (response) => {
+    this.getGeoCodeAPI().then(async (response) => {
       await this.getWeather(response);
-    }).catch(async (error) => {
-      await this.loggerService.error('An error occured on the requested API', error);
+    }).catch((error) => {
+      return this.loggerService.error('An error occured on the servers:', error);
     });
 
   }
