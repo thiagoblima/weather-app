@@ -13,25 +13,30 @@ export class Forecast {
     public buildDev;
     public loggerService;
     constructor({ ...attr }) {
-      this.buildDev = new BuildDev({ ...attr });
-      this.loggerService = new LoggerService({ ...attr });
+        this.buildDev = new BuildDev({ ...attr });
+        this.loggerService = new LoggerService({ ...attr });
     }
-    
+
     async getWeather(response) {
         const weatherUrl = `${this.buildDev.apikeys.forecastIOURL + this.buildDev.apikeys.forecastIOKey}/${response.lat},${response.lng}`;
-    
-        axios.get(weatherUrl).then(async (response) => {
-          const temperature = response.data.currently.temperature;
-          const apparentTemperature = response.data.currently.apparentTemperature;
-          return await this.loggerService.log(`It's currently ${temperature}. It feels like ${apparentTemperature}.`, { temperature: temperature, apparentTemperature: apparentTemperature });
-    
-        }).catch((error) => {
-          if (error.code === 'ENOTFOUND') {
-            return this.loggerService.error('Unable to connect to API servers.', error);
-          } else {
-            return this.loggerService.error(error.message);
-          }
-        });
-      }
+
+        try {
+           await axios.get(weatherUrl).then(async (response) => {
+                const temperature = response.data.currently.temperature;
+                const apparentTemperature = response.data.currently.apparentTemperature;
+                return await this.loggerService.log(`It's currently ${temperature}. It feels like ${apparentTemperature}.`, { temperature: temperature, apparentTemperature: apparentTemperature });
+
+            }).catch((error) => {
+                if (error.code === 'ENOTFOUND') {
+                    return this.loggerService.error('Unable to connect to API servers.', error);
+                } else {
+                    return this.loggerService.error(error.message);
+                }
+            });
+        } catch (error) {
+            return this.loggerService.error('An error occured:', error.message);
+
+        }
+    }
 }
- 
+

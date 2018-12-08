@@ -25,7 +25,6 @@ import * as axios from 'axios';
         const geocodeUrl = `${this.buildDev.apikeys.googleAPIURL}json?address=${encodedAddress}&key=${this.buildDev.apikeys.googleAPIKey}`;
     
         try {
-    
           await axios.get(geocodeUrl).then(async (response) => {
     
             if (response.data.status === 'ZERO_RESULTS') {

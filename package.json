@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "init-project": "rm -rf node_modules && rm -rf environments && rm -rf models && npm install && tsc",
+    "test-app": "node app -a='550 North Maiden Rd. Newnan, GA 30263'",
+    "init-project": "rm -rf node_modules && rm -rf environments && rm -rf models && npm install && rm -rf geocode && rm -rf weather && tsc && npm run test-app",
     "test-weather": "node app -a='1301 lambard street philadelphia'",
     "build": "tsc --listEmittedFiles"
   },

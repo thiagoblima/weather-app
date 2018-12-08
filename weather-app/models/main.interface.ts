@@ -8,6 +8,7 @@
 
 
 export interface MainModel {
-    buildDev: object;
+    geocode: object;
+    forecast: object;
     loggerService: object;
 }
