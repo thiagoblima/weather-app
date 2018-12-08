@@ -19,7 +19,7 @@ export class Main implements MainModel {
     this.loggerService = new LoggerService({ ...attr });
   }
 
-  async initApp() {
+  async getGeoCodeAPI() {
 
     const commandLine = new CommandLine();
     const encodedAddress = encodeURIComponent(commandLine.argv.address);
@@ -36,28 +36,47 @@ export class Main implements MainModel {
         this.loggerService.log('response', response);
         const lat = response.data.results[0].geometry.location.lat;
         const lng = response.data.results[0].geometry.location.lng;
-        const weatherUrl = `${this.buildDev.apikeys.forecastIOURL} ${this.buildDev.apikeys.forecastIOKey}/${lat},${lng}`;
         this.loggerService.log('Found address: ', response.data.results[0].formatted_address);
 
-        return await axios.get(weatherUrl);
+        return {
+          lat: await lat,
+          lng: await lng
+        };
 
-      }).then(async (response) => {
-        let temperature = response.data.currently.temperature;
-        var apparentTemperature = response.data.currently.apparentTemperature;
-        return await this.loggerService.log(`It's currently ${temperature}. It feels like ${apparentTemperature}.`);
-      }).catch((e) => {
-        if (e.code === 'ENOTFOUND') {
-          this.loggerService.error('Unable to connect to API servers.', e);
-        } else {
-          this.loggerService.error(e.message);
-        }
-      });
-
-    } catch (e) {
-
-      await this.loggerService.error('An error occured:', e);
-
+      }).catch(async (error) => {
+        await this.loggerService.error('An error occured on the requested API', error);
+      })
+    } catch (error) {
+      await this.loggerService.error('An error occured:', error);
     }
+  }
+
+  async getWeather(response) {
+    const weatherUrl = `${this.buildDev.apikeys.forecastIOURL + this.buildDev.apikeys.forecastIOKey}/${response.lat},${response.lng}`;
+
+    axios.get(weatherUrl).then(async (response) => {
+      const temperature = response.data.currently.temperature;
+      const apparentTemperature = response.data.currently.apparentTemperature;
+      return await this.loggerService.log(`It's currently ${temperature}. It feels like ${apparentTemperature}.`, { temperature: temperature, apparentTemperature: apparentTemperature });
+
+    }).catch(async (error) => {
+      if (error.code === 'ENOTFOUND') {
+        await this.loggerService.error('Unable to connect to API servers.', error);
+      } else {
+        await this.loggerService.error(error.message);
+      }
+    });
+  }
+
+  async initApp() {
+    const results = this.getGeoCodeAPI();
+
+    results.then(async (response) => {
+      await this.getWeather(response);
+    }).catch(async (error) => {
+      await this.loggerService.error('An error occured on the requested API', error);
+    });
+
   }
 
 }
