@@ -39,5 +39,4 @@ export class LoggerService implements LoggerModel {
         return this.error;
     }
 
-
 }

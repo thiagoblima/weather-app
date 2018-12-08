@@ -33,4 +33,3 @@ export class Main implements MainModel {
 
 const main = new Main({});
 main.initApp();
-
