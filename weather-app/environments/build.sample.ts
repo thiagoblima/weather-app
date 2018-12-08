@@ -6,10 +6,10 @@
  */
 
 import { BuildDevModel } from '../models/build.interface';
- 
+
 export class BuildDev implements BuildDevModel {
     public apikeys;
-    constructor({...apikeys}) {
+    constructor({ ...apikeys }) {
         this.apikeys = {
             googleAPIURL: 'https://maps.googleapis.com/maps/api/geocode/',
             googleAPIKey: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
