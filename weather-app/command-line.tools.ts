@@ -13,7 +13,7 @@ import { CommandLineModel } from './models/command-line.interface';
 
 export class CommandLine implements CommandLineModel {
   public argv;
-  constructor() {
+  constructor({ ...attr }) {
     this.argv = yargs
     .options({
       a: {
@@ -25,7 +25,7 @@ export class CommandLine implements CommandLineModel {
     })
     .help()
     .alias('help', 'h')
-    .argv;
-  }
+    .argv || attr;
+  } 
 
 };
