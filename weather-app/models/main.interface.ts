@@ -8,5 +8,6 @@
 
 
 export interface MainModel {
-    build_dev: object;
+    buildDev: object;
+    loggerService: object;
 }
