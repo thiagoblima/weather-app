@@ -20,6 +20,7 @@
     },
     "files": [
         "./weather-app/app.ts",
-        "./weather-app/test/geocode.spec.ts"
+        "./weather-app/test/geocode.spec.ts",
+        "./weather-app/test/forecast.spec.ts"
     ]
 }
