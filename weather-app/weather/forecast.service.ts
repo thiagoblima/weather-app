@@ -7,9 +7,10 @@
 
 import { BuildDev } from '../environments/build.dev';
 import { LoggerService } from '../logger';
+import { ForecastModel } from '../models/forecast.model';
 import * as axios from 'axios';
 
-export class Forecast {
+export class Forecast implements ForecastModel {
     public buildDev;
     public loggerService;
     constructor({ ...attr }) {
