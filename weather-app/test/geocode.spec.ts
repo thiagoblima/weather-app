@@ -29,7 +29,7 @@ async geoCodeAPI(): Promise<Object> {
         await this.loggerService.getLogResultData('Staring GeoCode Tests', { buildDev: this.buildDev });
     });
 
-    describe('GeoCode', async() => {  
+    describe('Google GeoCode Tests', async() => {  
        it('it should GET a JSON with status code 200', (done) => {
             chai.request(`${this.buildDev.apikeys.googleAPIURL}`)
                 .get(`json?address=${'683 Inverness Street Oviedo, FL 32765'}&key=${this.buildDev.apikeys.googleAPIKey}`)
