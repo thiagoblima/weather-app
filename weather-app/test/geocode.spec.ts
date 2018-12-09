@@ -6,7 +6,6 @@
 
 import { GeoCode } from '../geocode/geocode.service';
 import { LoggerService } from '../logger';
-import { CommandLine } from '../command-line.tools';
 import { BuildDev } from '../environments/build.dev';
 import { expect } from 'chai';
 

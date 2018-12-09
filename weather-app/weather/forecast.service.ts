@@ -21,7 +21,7 @@ export class Forecast {
         const weatherUrl = `${this.buildDev.apikeys.forecastIOURL + this.buildDev.apikeys.forecastIOKey}/${response.lat},${response.lng}`;
 
         try {
-           await axios.get(weatherUrl).then(async (response) => {
+            await axios.get(weatherUrl).then(async (response) => {
                 const temperature = response.data.currently.temperature;
                 const apparentTemperature = response.data.currently.apparentTemperature;
                 return await this.loggerService.log(`It's currently ${temperature}. It feels like ${apparentTemperature}.`, { temperature: temperature, apparentTemperature: apparentTemperature });
