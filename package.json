@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --timeout 10000",
-    "init-project": "rm -rf node_modules && rm -rf environments && rm -rf models && npm install && rm -rf geocode && rm -rf weather && tsc && npm run test-app",
+    "init-project": "rm -rf node_modules && rm -rf environments && rm -rf test && rm -rf models && rm -rf geocode && rm -rf weather && npm install && tsc && mocha --timeout 10000",
     "test-weather": "node app -a='1301 lambard street philadelphia'",
     "build": "tsc --listEmittedFiles"
   },
