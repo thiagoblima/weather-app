@@ -25,8 +25,8 @@ export class TestGeoCode {
 
 async geoCodeAPI(): Promise<Object> {
 
-    beforeEach('Setting up the userList', async () => { 
-        await this.loggerService.getLogResultData('Staring GeoCode Tests', { buildDev: this.buildDev });
+    beforeEach('Initializing building process', async () => { 
+        await this.loggerService.getLogResultData('Staring Google Tests, building env:', { buildDev: this.buildDev });
     });
 
     describe('Google GeoCode Tests', async() => {  
