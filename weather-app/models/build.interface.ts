@@ -2,7 +2,7 @@
  * @author: <thitheguy@gmail.com> Thiago Lima
  * @class: BuildDevModel
  * @version: 0.1.0
- * @description: building model.
+ * @description: Building Object Model.
  * @exports: object
  */
 

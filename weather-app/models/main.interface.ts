@@ -2,7 +2,7 @@
  * @author: <thitheguy@gmail.com> Thiago Lima
  * @class: MainModel
  * @version: 0.1.0
- * @description: main model.
+ * @description: Main Object Model.
  * @exports: object
  */
 

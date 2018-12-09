@@ -8,9 +8,10 @@
 import { BuildDev } from '../environments/build.dev';
 import { CommandLine } from '../command-line.tools';
 import { LoggerService } from '../logger';
+import { GeoCodeModel } from '../models/geocode.model'
 import * as axios from 'axios';
 
-export class GeoCode {
+export class GeoCode implements GeoCodeModel {
   public buildDev;
   public loggerService;
   public commandLine;
