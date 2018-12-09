@@ -9,6 +9,7 @@ playground/
 
 ## definitely types
 models/*
+test/*
 environments/*
 geocode/*
 weather/*

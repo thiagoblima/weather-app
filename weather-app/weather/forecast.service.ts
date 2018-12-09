@@ -17,7 +17,7 @@ export class Forecast {
         this.loggerService = new LoggerService({ ...attr });
     }
 
-    async getWeather(response) {
+    async getWeather(response): Promise<JSON> {
         const weatherUrl = `${this.buildDev.apikeys.forecastIOURL + this.buildDev.apikeys.forecastIOKey}/${response.lat},${response.lng}`;
 
         try {
@@ -37,5 +37,6 @@ export class Forecast {
             return this.loggerService.error('An error occured:', error.message);
 
         }
+        return await response;
     }
 }

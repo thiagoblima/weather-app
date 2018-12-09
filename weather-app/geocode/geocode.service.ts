@@ -20,7 +20,7 @@ import * as axios from 'axios';
         this.loggerService = new LoggerService({ ...attr });
      }
 
-     async getGeoCodeAPI() {
+     async getGeoCodeAPI(): Promise<void> {
         const encodedAddress = encodeURIComponent(this.commandLine.argv.address);
         const geocodeUrl = `${this.buildDev.apikeys.googleAPIURL}json?address=${encodedAddress}&key=${this.buildDev.apikeys.googleAPIKey}`;
     
@@ -48,5 +48,5 @@ import * as axios from 'axios';
           await this.loggerService.error('An error occured:', error);
         }
       }
- }
+   }
  

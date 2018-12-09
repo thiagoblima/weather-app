@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test-app": "node app -a='550 North Maiden Rd. Newnan, GA 30263'",
+    "test": "mocha --timeout 10000",
     "init-project": "rm -rf node_modules && rm -rf environments && rm -rf models && npm install && rm -rf geocode && rm -rf weather && tsc && npm run test-app",
     "test-weather": "node app -a='1301 lambard street philadelphia'",
     "build": "tsc --listEmittedFiles"
@@ -13,11 +13,17 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.13.1",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.0",
+    "mocha": "^5.2.0",
     "request": "^2.73.0",
     "yargs": "^4.8.1"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
+    "@types/chai": "^4.1.7",
+    "@types/chai-http": "^3.0.5",
+    "@types/mocha": "^5.2.5",
     "@types/node": "^10.12.12",
     "@types/request": "^2.48.1",
     "@types/yargs": "^12.0.1"
