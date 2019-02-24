@@ -21,8 +21,8 @@ export class Main implements MainModel {
   }
 
   async initApp() {
-    this.geocode.getGeoCodeAPI().then(async (response) => {
-      await this.forecast.getWeather(response);
+    return await this.geocode.getGeoCodeAPI().then((response) => {
+       this.forecast.getWeather(response);
     }).catch((error) => {
       return this.loggerService.error('An error occured on the servers:', error);
     });
